@@ -1,30 +1,31 @@
 import React from 'react';
 import './AddRobot.css';
 
-const AddRobot = () => {
+const AddRobot = ({handleSubmit}) => {
     return (
         <div className='addRobotForm'>
             <p>Add New Robot:</p>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input
                     type="text"
                     name="name"
                     id="name"
-                    //value={name}
-                    //onChange={this.handleChange} 
+                    placeholder="name"
+                    //value={formChange}
+                    //onChange={this.handleFormChange} 
                     />
-                    <br/>
                 <label htmlFor="email">Email: </label>
                 <input
                     type="text"
                     name="email"
                     id="email"
-                    //value={job}
-                    //onChange={this.handleChange} 
+                    placeholder="email"
+                    //value={formChange}
+                    //onChange={this.handleFormChange} 
                     />
+                <button type="submit">Submit</button>
             </form>
-            <a class="f6 link dim br-pill ba bw2 ph3 pv2 mb2 dib bg-lightest-blue" href="#0">Add Robot</a>
         </div>
     );
 }
