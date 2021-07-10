@@ -24,13 +24,7 @@ class App extends Component {
     }
 
     onInputChange = (fieldName, event) => {
-        if (fieldName === 'searchField') {
-            this.setState({ searchField: event.target.value })
-        } else if (fieldName === 'nameField') {
-            this.setState({ nameField: event.target.value })
-        } else if (fieldName === 'emailField') {
-            this.setState({ emailField: event.target.value })
-        }
+        this.setState({ [fieldName]: event.target.value })
     }
 
     onButtonSubmit = () => {
