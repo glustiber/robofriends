@@ -11,7 +11,9 @@ class App extends Component {
         super()
         this.state = {
             robots: [],
-            searchField: ''
+            searchField: '',
+            nameField: '',
+            emailField: ''
         }
     }
 
@@ -21,17 +23,26 @@ class App extends Component {
             .then(users => this.setState({robots:users}))
     }
 
+    /* CLEAN UP - DRY - TOO MUCH REPETITION */
     onSearchChange = (event) => {
         this.setState({ searchField: event.target.value })
     }
 
-    handleSubmit = newRobot => {
-        const { robots } = this.state;
+    onNameChange = (event) => {
+        this.setState({ nameField: event.target.value })
+    }
+
+    onEmailChange = (event) => {
+        this.setState({ emailField: event.target.value })
+    }
+
+    onButtonSubmit = () => {
+        const { robots, nameField, emailField } = this.state;
         const robotEntry = [{
             id: robots[robots.length - 1].id + 1,
-            name: newRobot.name,
+            name: nameField,
             username: 'test',
-            email: newRobot.email
+            email: emailField
         }];
 
         this.setState({robots: [...robots, ...robotEntry] })
@@ -61,7 +72,11 @@ class App extends Component {
                 <div className='tc'>
                     <h1 className='f2'>RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
-                    <AddRobot handleSubmit={this.handleSubmit}/>
+                    <AddRobot 
+                        onNameChange={this.onNameChange} 
+                        onEmailChange={this.onEmailChange} 
+                        onButtonSubmit={this.onButtonSubmit}
+                    />
                     <Scroll>
                         <ErrorBoundary>
                             <CardList robots={ filteredRobots } removeRobot={this.removeRobot} />
