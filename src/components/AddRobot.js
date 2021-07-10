@@ -12,7 +12,7 @@ const AddRobot = ({ onNameChange, onEmailChange, onButtonSubmit }) => {
                     name="name"
                     id="name"
                     placeholder="name"
-                    onChange={onNameChange} 
+                    onChange={(e) => onNameChange('nameField', e)} 
                     />
                 <label htmlFor="email">Email: </label>
                 <input
@@ -20,7 +20,7 @@ const AddRobot = ({ onNameChange, onEmailChange, onButtonSubmit }) => {
                     name="email"
                     id="email"
                     placeholder="email"
-                    onChange={onEmailChange} 
+                    onChange={(e) => onEmailChange('emailField', e)} 
                     />
                 <button type="submit" onClick={onButtonSubmit} >Submit</button>
             </div>
